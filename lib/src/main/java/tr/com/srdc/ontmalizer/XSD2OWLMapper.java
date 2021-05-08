@@ -238,7 +238,7 @@ public class XSD2OWLMapper {
     public URI convertURNtoURI(String targetNamespace) throws URISyntaxException {
         String uriString = targetNamespace;
         if (targetNamespace.startsWith("urn:")) {
-            uriString = targetNamespace.replaceAll(":", "/");
+            uriString = targetNamespace.replace(":", "/");
             uriString = "http://www.urn.com/" + uriString;
         }
         return new URI(uriString);
