@@ -2,7 +2,7 @@
 .project
 .settings/
 build
-.idea/*
 
+build
 lib/src/test/resources/output/
 lib/bin
