@@ -9,17 +9,25 @@ Contributor(s), reviewer(s) and progress was tracked in this issue:
 Deployment segítése (Docker, Vagrant, felhő szolgáltatásba telepítés...)
 
 ###Actionable subtasks
-- asd
-- asd
+- Have a buildable CLI tool (#37)
+- Have an artifact from the build process
+- Make dockering (#11)
 
 ##Work done
-**TODO** *(a couple of paragraphs...)*
+After googling for "docker build for java",
+I find that building an image can be separated from the java build process.
+In my view, separation of the build process and the deployment results
+in a more flexible approach.
+The boundary of these stages interfaces only with a single artifact with each other.
 
-##Printscreen (optional, if relevant)
-**TODO** 
+So I wrote a simple Dockerfile and a .dockerignore file
+to use our little CLI toolto run in Docker.
+The docker build can be called after Gradle build only.
 
-##Results
-**TODO** 
+##Usage
+- `gradle cli:shadowJar`
+- `sudo docker build -t ontomalizer .`
+- `sudo docker run -it --rm -v "$(pwd):/doc" ontomalizer /doc/file1`
 
 ##Lessons learned
-**TODO** 
+Keep our Dockerfile simple with separation of build stages and using a moder build toochain.
