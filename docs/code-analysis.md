@@ -37,7 +37,8 @@ The team decided to fix issues [#13](https://github.com/BME-MIT-IET/iet-hf2021-v
 ![](imgs/sonarqube.png)
 
 ## Results
-**TODO** 
+The workflow and the solutions can be seen in the issues and pull requests above.
 
+In total the code quality has become better based on clean-code standards.
 ## Lessons learned
-**TODO** 
+The takeaway is that static analysis tools are very helpful, but personal reviews are also important, because at the end of the day developers need to read and understand easily.
