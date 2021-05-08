@@ -18,6 +18,11 @@ jobs:
       - name: Make jar file
         run: ./gradlew cli:shadowJar
 
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ontomalizer-cli
+          path: cli/build/libs/*.jar
+
   docker:
     needs: build
     runs-on: ubuntu-latest
