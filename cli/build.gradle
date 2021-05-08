@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group = "hu.bme.vdqw4w9wgxcq"
+version = "1.0-SNAPSHOT"
+description = 'CLI tool for Ontology Normalizer'
+java.sourceCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.11'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
