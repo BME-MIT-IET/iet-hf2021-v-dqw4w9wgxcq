@@ -77,8 +77,6 @@ public class XML2OWLMapper {
 
     private String baseURI = Constants.ONTMALIZER_INSTANCE_BASE_URI;
     private String baseNS = Constants.ONTMALIZER_INSTANCE_BASE_NS;
-
-//	private ArrayList<OntClass> abstractClasses 	= null;
     private ArrayList<OntClass> mixedClasses = null;
 
     private String NS = null;
@@ -159,13 +157,12 @@ public class XML2OWLMapper {
      */
     private void initializeEnvironment(XSD2OWLMapper mapping) {
         ontology = mapping.getOntology();
-//		abstractClasses = mapping.getAbstractClasses();
         mixedClasses = mapping.getMixedClasses();
 
         model = ModelFactory.createDefaultModel();
 
         Random random = new Random();
-        no = random.nextInt(9999999);
+        no = random.nextInt(9999999+1);
 
         // Get all the named resources the count map
         count = new HashMap<>();
@@ -186,7 +183,7 @@ public class XML2OWLMapper {
         while (keys.hasNext()) {
             String key = keys.next();
             // The default namespace (i.e. the null prefix) should always refer to baseURI in instances
-            if (key.equals("")) {
+            if (key.isEmpty()) {
                 newNsMap.put("", baseURI);
             } else {
                 newNsMap.put(key,  nsmap.get(key));
@@ -289,7 +286,7 @@ public class XML2OWLMapper {
                 LOGGER.trace("Type: {}", element.getAttribute("type"));
                 String overriddenXsiType = element.getAttributeNS(Constants.XSI_NS, "type");
                 LOGGER.trace("overridden type: {}", overriddenXsiType);
-                if (overriddenXsiType != null && !overriddenXsiType.equals("")) {
+                if (overriddenXsiType != null && !overriddenXsiType.isEmpty()) {
                     String overriddenNS = null;
                     String overriddenType = null;
                     if (overriddenXsiType.contains(":")) {
@@ -339,7 +336,7 @@ public class XML2OWLMapper {
 
         } // This case is only valid for instances of mixed classes
         else if (node.getNodeType() == Node.TEXT_NODE) {
-            if (node.getNodeValue().trim().equals("")) {
+            if (node.getNodeValue().trim().isEmpty()) {
                 return;
             }
 

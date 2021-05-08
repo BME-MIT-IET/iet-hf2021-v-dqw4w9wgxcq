@@ -62,44 +62,48 @@ public class SimpleTypeRestriction {
         Iterator<? extends XSFacet> i = restriction.getDeclaredFacets().iterator();
         while (i.hasNext()) {
             XSFacet facet = i.next();
-            if (facet.getName().equals(XSFacet.FACET_ENUMERATION)) {
-                en.add(facet.getValue().value);
+            switch(facet.getName()){
+                case XSFacet.FACET_ENUMERATION:
+                    en.add(facet.getValue().value);
+                    break;
+                case XSFacet.FACET_MAXINCLUSIVE:
+                    maxInclusive = facet.getValue().value;
+                    break; 
+                case XSFacet.FACET_MININCLUSIVE:
+                     minInclusive = facet.getValue().value;
+                    break;
+                case XSFacet.FACET_MAXEXCLUSIVE:
+                     maxExclusive = facet.getValue().value;
+                    break;
+                case XSFacet.FACET_MINEXCLUSIVE:
+                    minExclusive = facet.getValue().value;
+                    break;
+                case XSFacet.FACET_LENGTH:
+                    length = facet.getValue().value;
+                    break;
+                case XSFacet.FACET_MAXLENGTH:
+                    maxLength = facet.getValue().value;
+                    break;
+                case XSFacet.FACET_MINLENGTH:
+                    minLength = facet.getValue().value;
+                    break;
+                case XSFacet.FACET_PATTERN:
+                    pattern = facet.getValue().value;
+                    break;
+                case XSFacet.FACET_TOTALDIGITS:
+                    totalDigits = facet.getValue().value;
+                    break;
+                case XSFacet.FACET_FRACTIONDIGITS:
+                    fractionDigits = facet.getValue().value;
+                    break;
+                case XSFacet.FACET_WHITESPACE:
+                    whiteSpace = facet.getValue().value;
+                    break;
+                default: break;
             }
-            if (facet.getName().equals(XSFacet.FACET_MAXINCLUSIVE)) {
-                maxInclusive = facet.getValue().value;
-            }
-            if (facet.getName().equals(XSFacet.FACET_MININCLUSIVE)) {
-                minInclusive = facet.getValue().value;
-            }
-            if (facet.getName().equals(XSFacet.FACET_MAXEXCLUSIVE)) {
-                maxExclusive = facet.getValue().value;
-            }
-            if (facet.getName().equals(XSFacet.FACET_MINEXCLUSIVE)) {
-                minExclusive = facet.getValue().value;
-            }
-            if (facet.getName().equals(XSFacet.FACET_LENGTH)) {
-                length = facet.getValue().value;
-            }
-            if (facet.getName().equals(XSFacet.FACET_MAXLENGTH)) {
-                maxLength = facet.getValue().value;
-            }
-            if (facet.getName().equals(XSFacet.FACET_MINLENGTH)) {
-                minLength = facet.getValue().value;
-            }
-            if (facet.getName().equals(XSFacet.FACET_PATTERN)) {
-                pattern = facet.getValue().value;
-            }
-            if (facet.getName().equals(XSFacet.FACET_TOTALDIGITS)) {
-                totalDigits = facet.getValue().value;
-            }
-            if (facet.getName().equals(XSFacet.FACET_FRACTIONDIGITS)) {
-                fractionDigits = facet.getValue().value;
-            }
-            if (facet.getName().equals(XSFacet.FACET_WHITESPACE)) {
-                whiteSpace = facet.getValue().value;
-            }
+           
         }
-        if (en.size() > 0) {
+        if (!en.isEmpty()) {
             enumeration = en.toArray(new String[]{});
         }
     }
