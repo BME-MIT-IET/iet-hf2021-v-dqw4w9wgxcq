@@ -186,7 +186,7 @@ public class XML2OWLMapper {
         while (keys.hasNext()) {
             String key = keys.next();
             // The default namespace (i.e. the null prefix) should always refer to baseURI in instances
-            if (key.equals("")) {
+            if (key.isEmpty()) {
                 newNsMap.put("", baseURI);
             } else {
                 newNsMap.put(key,  nsmap.get(key));
@@ -289,7 +289,7 @@ public class XML2OWLMapper {
                 LOGGER.trace("Type: {}", element.getAttribute("type"));
                 String overriddenXsiType = element.getAttributeNS(Constants.XSI_NS, "type");
                 LOGGER.trace("overridden type: {}", overriddenXsiType);
-                if (overriddenXsiType != null && !overriddenXsiType.equals("")) {
+                if (overriddenXsiType != null && !overriddenXsiType.isEmpty()) {
                     String overriddenNS = null;
                     String overriddenType = null;
                     if (overriddenXsiType.contains(":")) {
@@ -339,7 +339,7 @@ public class XML2OWLMapper {
 
         } // This case is only valid for instances of mixed classes
         else if (node.getNodeType() == Node.TEXT_NODE) {
-            if (node.getNodeValue().trim().equals("")) {
+            if (node.getNodeValue().trim().isEmpty()) {
                 return;
             }
 
