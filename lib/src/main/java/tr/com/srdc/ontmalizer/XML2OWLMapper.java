@@ -82,6 +82,9 @@ public class XML2OWLMapper {
     private String NS = null;
     private String nsPrefix = null;
 
+    private Random random = new Random();
+
+
     /**
      * Creates a new XML2OWLMapper instance.
      *
@@ -161,7 +164,6 @@ public class XML2OWLMapper {
 
         model = ModelFactory.createDefaultModel();
 
-        Random random = new Random();
         no = random.nextInt(9999999+1);
 
         // Get all the named resources the count map
@@ -343,7 +345,7 @@ public class XML2OWLMapper {
             // Check if mixed class
             Iterator<OntClass> it = mixedClasses.iterator();
             while (it.hasNext()) {
-                OntClass mixed = (OntClass) it.next();
+                OntClass mixed = it.next();
                 if (mixed.getURI().equals(subjectType.getURI())) {
                     break;
                 }
@@ -381,44 +383,41 @@ public class XML2OWLMapper {
         while (temp != null) {
             ExtendedIterator<OntClass> itres = temp.listSuperClasses();
             while (itres.hasNext()) {
-                OntClass rescl = (OntClass) itres.next();
-                if (rescl.isRestriction()) {
-                    if (rescl.asRestriction().isAllValuesFromRestriction()) {
-                        AllValuesFromRestriction avfres = rescl.asRestriction().asAllValuesFromRestriction();
-                        /**
-                         * In some cases, a resource can be both an object and
-                         * datatype property. If, at the same time the prefixes
-                         * opprefix and dtpprefix are identical, then we have to
-                         * be careful. We check directly the RDF type of the
-                         * AllValuesFrom restriction in this case.
-                         */
-                        if (avfres.getOnProperty().getLocalName().equals(NamingUtil.createPropertyName(opprefix, prop))
-                                && opprefix.equals(dtpprefix)
-                                && avfres.getOnProperty().isObjectProperty()
-                                && avfres.getOnProperty().isDatatypeProperty()) {
-                            result.setDatatype(findResourceType(avfres.getAllValuesFrom().getURI()).isDatatype());
-                            result.setResource(avfres.getAllValuesFrom());
-                            return result;
-                        } else if (avfres.getOnProperty().getLocalName()
-                                .equals(NamingUtil.createPropertyName(opprefix, prop))
-                                && avfres.getOnProperty().isObjectProperty()) {
-                            result.setDatatype(false);
-                            result.setResource(avfres.getAllValuesFrom());
-                            return result;
-                        } else if (avfres.getOnProperty().getLocalName()
-                                .equals(NamingUtil.createPropertyName(dtpprefix, prop))
-                                && avfres.getOnProperty().isDatatypeProperty()) {
-                            result.setDatatype(true);
-                            result.setResource(avfres.getAllValuesFrom());
-                            return result;
-                        }
+                OntClass rescl = itres.next();
+                if (rescl.isRestriction() && rescl.asRestriction().isAllValuesFromRestriction()) {
+                    AllValuesFromRestriction avfres = rescl.asRestriction().asAllValuesFromRestriction();
+                    /**
+                     * In some cases, a resource can be both an object and datatype property. If, at
+                     * the same time the prefixes opprefix and dtpprefix are identical, then we have
+                     * to be careful. We check directly the RDF type of the AllValuesFrom
+                     * restriction in this case.
+                     */
+                    if (avfres.getOnProperty().getLocalName().equals(NamingUtil.createPropertyName(opprefix, prop))
+                            && opprefix.equals(dtpprefix) && avfres.getOnProperty().isObjectProperty()
+                            && avfres.getOnProperty().isDatatypeProperty()) {
+                        result.setDatatype(findResourceType(avfres.getAllValuesFrom().getURI()).isDatatype());
+                        result.setResource(avfres.getAllValuesFrom());
+                        return result;
+                    } else if (avfres.getOnProperty().getLocalName()
+                            .equals(NamingUtil.createPropertyName(opprefix, prop))
+                            && avfres.getOnProperty().isObjectProperty()) {
+                        result.setDatatype(false);
+                        result.setResource(avfres.getAllValuesFrom());
+                        return result;
+                    } else if (avfres.getOnProperty().getLocalName()
+                            .equals(NamingUtil.createPropertyName(dtpprefix, prop))
+                            && avfres.getOnProperty().isDatatypeProperty()) {
+                        result.setDatatype(true);
+                        result.setResource(avfres.getAllValuesFrom());
+                        return result;
+
                     }
                 }
             }
 
             ExtendedIterator<OntClass> it = temp.listSuperClasses();
             while (it.hasNext()) {
-                OntClass superCl = (OntClass) it.next();
+                OntClass superCl = it.next();
                 if (!superCl.isRestriction() && !superCl.isEnumeratedClass()) {
                     queue.add(superCl);
                 }

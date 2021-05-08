@@ -94,6 +94,8 @@ public class XSD2OWLMapper {
     private ArrayList<OntClass> abstractClasses = null;
     private ArrayList<OntClass> mixedClasses = null;
 
+    private String addGroupclassMsg= "Adding groupclass as superclass: {}"; 
+
     private XSOMParser parser;
 
     /**
@@ -236,7 +238,7 @@ public class XSD2OWLMapper {
     public URI convertURNtoURI(String targetNamespace) throws URISyntaxException {
         String uriString = targetNamespace;
         if (targetNamespace.startsWith("urn:")) {
-            uriString = targetNamespace.replaceAll(":", "/");
+            uriString = targetNamespace.replace(":", "/");
             uriString = "http://www.urn.com/" + uriString;
         }
         return new URI(uriString);
@@ -581,7 +583,7 @@ public class XSD2OWLMapper {
                         } else if (term.isModelGroupDecl()) {
                             XSModelGroupDecl group = term.asModelGroupDecl();
                             OntClass groupClass = ontology.createClass(getURI(mainURI, group));
-                            LOGGER.debug("Adding groupclass as superclass: {}", groupClass);
+                            LOGGER.debug(addGroupclassMsg, groupClass);
                             groupClass.addSubClass(complexClass);
                         }
                     }
@@ -604,7 +606,7 @@ public class XSD2OWLMapper {
                     } else if (term.isModelGroupDecl()) {
                         XSModelGroupDecl group = term.asModelGroupDecl();
                         OntClass groupClass = ontology.createClass(getURI(mainURI, group));
-                        LOGGER.trace("Adding groupclass as superclass: {}", groupClass);
+                        LOGGER.trace(addGroupclassMsg, groupClass);
                         groupClass.addSubClass(complexClass);
                     }
                 }
@@ -822,7 +824,7 @@ public class XSD2OWLMapper {
             } else if (term.isModelGroupDecl()) {
                 XSModelGroupDecl groupDecl = term.asModelGroupDecl();
                 OntClass groupClass = ontology.createClass(getURI(mainURI, groupDecl));
-                LOGGER.debug("Adding groupclass as superclass: {}", groupClass);
+                LOGGER.debug(addGroupclassMsg, groupClass);
                 groupClass.addSubClass(parent);
             }
             
