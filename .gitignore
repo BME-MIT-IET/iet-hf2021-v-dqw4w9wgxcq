@@ -2,4 +2,4 @@
 gradle/
 
 lib/build/
-lib/test/resources/output/
+lib/src/test/resources/output/
