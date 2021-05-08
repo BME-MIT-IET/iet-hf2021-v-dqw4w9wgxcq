@@ -162,7 +162,7 @@ public class XML2OWLMapper {
         model = ModelFactory.createDefaultModel();
 
         Random random = new Random();
-        no = random.nextInt(9999999);
+        no = random.nextInt(9999999+1);
 
         // Get all the named resources the count map
         count = new HashMap<>();
