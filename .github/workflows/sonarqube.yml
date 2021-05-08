@@ -18,7 +18,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Sonarqube analyze
-        run: ./gradlew libsonarqube \
+        run: ./gradlew sonarqube \
             -Dsonar.projectKey=lib-v-dqw4w9wgxcq \
             -Dsonar.host.url=https://sonarqube.maze.sch.bme.hu \
-            -Dsonar.login=e9b53371023fbe4193c5c0df5346d47d52db320d
+            -Dsonar.login=${{ secrets.SONAR_LOGIN }}
