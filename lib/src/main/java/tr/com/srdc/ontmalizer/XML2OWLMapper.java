@@ -345,7 +345,7 @@ public class XML2OWLMapper {
             // Check if mixed class
             Iterator<OntClass> it = mixedClasses.iterator();
             while (it.hasNext()) {
-                OntClass mixed = (OntClass) it.next();
+                OntClass mixed = it.next();
                 if (mixed.getURI().equals(subjectType.getURI())) {
                     break;
                 }
@@ -383,7 +383,7 @@ public class XML2OWLMapper {
         while (temp != null) {
             ExtendedIterator<OntClass> itres = temp.listSuperClasses();
             while (itres.hasNext()) {
-                OntClass rescl = (OntClass) itres.next();
+                OntClass rescl = itres.next();
                 if (rescl.isRestriction() && rescl.asRestriction().isAllValuesFromRestriction()) {
                     AllValuesFromRestriction avfres = rescl.asRestriction().asAllValuesFromRestriction();
                     /**
@@ -410,13 +410,14 @@ public class XML2OWLMapper {
                         result.setDatatype(true);
                         result.setResource(avfres.getAllValuesFrom());
                         return result;
+
                     }
                 }
             }
 
             ExtendedIterator<OntClass> it = temp.listSuperClasses();
             while (it.hasNext()) {
-                OntClass superCl = (OntClass) it.next();
+                OntClass superCl = it.next();
                 if (!superCl.isRestriction() && !superCl.isEnumeratedClass()) {
                     queue.add(superCl);
                 }
