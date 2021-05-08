@@ -31,7 +31,7 @@ class Main {
             fout.close();
 
         } catch (Exception e) {
-            LOGGER.error("{}", e.getMessage());
+            //LOGGER.error("{}", e.getMessage());
         }
     }
 }
