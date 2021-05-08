@@ -24,10 +24,14 @@ So I wrote a simple Dockerfile and a .dockerignore file
 to use our little CLI toolto run in Docker.
 The docker build can be called after Gradle build only.
 
+We used the CI to push the image to DockerHub.
+
 ##Usage
 - `gradle cli:shadowJar`
 - `sudo docker build -t ontomalizer .`
 - `sudo docker run -it --rm -v "$(pwd):/doc" ontomalizer /doc/file1`
 
+Ci will push the new image from the master branch.
+
 ##Lessons learned
-Keep our Dockerfile simple with separation of build stages and using a moder build toochain.
+Keep our Dockerfile simple with separation of build stages and using a modern build toochain.
