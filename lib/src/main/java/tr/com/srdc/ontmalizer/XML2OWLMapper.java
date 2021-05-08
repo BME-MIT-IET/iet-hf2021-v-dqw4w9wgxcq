@@ -77,8 +77,6 @@ public class XML2OWLMapper {
 
     private String baseURI = Constants.ONTMALIZER_INSTANCE_BASE_URI;
     private String baseNS = Constants.ONTMALIZER_INSTANCE_BASE_NS;
-
-//	private ArrayList<OntClass> abstractClasses 	= null;
     private ArrayList<OntClass> mixedClasses = null;
 
     private String NS = null;
@@ -159,7 +157,6 @@ public class XML2OWLMapper {
      */
     private void initializeEnvironment(XSD2OWLMapper mapping) {
         ontology = mapping.getOntology();
-//		abstractClasses = mapping.getAbstractClasses();
         mixedClasses = mapping.getMixedClasses();
 
         model = ModelFactory.createDefaultModel();
