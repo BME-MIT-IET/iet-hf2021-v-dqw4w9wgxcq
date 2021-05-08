@@ -1,19 +1,19 @@
-#Deployment assistance
+# Deployment assistance
 
-##Overview of the task
+## Overview of the task
 
 Contributor(s), reviewer(s) and progress was tracked in this issue:
 [#11](https://github.com/BME-MIT-IET/iet-hf2021-v-dqw4w9wgxcq/issues/11)
 
-###Original description (in Hungarian)
+### Original description (in Hungarian)
 Deployment segítése (Docker, Vagrant, felhő szolgáltatásba telepítés...)
 
-###Actionable subtasks
+### Actionable subtasks
 - Have a buildable CLI tool (#37)
 - Have an artifact from the build process
 - Make dockering (#11)
 
-##Work done
+## Work done
 After googling for "docker build for java",
 I find that building an image can be separated from the java build process.
 In my view, separation of the build process and the deployment results
@@ -26,12 +26,12 @@ The docker build can be called after Gradle build only.
 
 We used the CI to push the image to DockerHub.
 
-##Usage
+## Usage
 - `gradle cli:shadowJar`
 - `sudo docker build -t ontomalizer .`
 - `sudo docker run -it --rm -v "$(pwd):/doc" ontomalizer /doc/file1`
 
 Ci will push the new image from the master branch.
 
-##Lessons learned
+## Lessons learned
 Keep our Dockerfile simple with separation of build stages and using a modern build toochain.
