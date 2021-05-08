@@ -29,7 +29,7 @@ hibajelzéseket vizsgáljatok meg.
 
 The team decided to fix issues [#13](https://github.com/BME-MIT-IET/iet-hf2021-v-dqw4w9wgxcq/issues/13), [#15](https://github.com/BME-MIT-IET/iet-hf2021-v-dqw4w9wgxcq/issues/15), [#18](https://github.com/BME-MIT-IET/iet-hf2021-v-dqw4w9wgxcq/issues/18) and [#19](https://github.com/BME-MIT-IET/iet-hf2021-v-dqw4w9wgxcq/issues/19), the solution for the problems can be seen in pull request [#33](https://github.com/BME-MIT-IET/iet-hf2021-v-dqw4w9wgxcq/pull/33)
 
-**Static analysis:** Sonarqube has been set up based on issue [#29](https://github.com/BME-MIT-IET/iet-hf2021-v-dqw4w9wgxcq/issues/29). The pull request for the set up can be seen in [here](https://github.com/BME-MIT-IET/iet-hf2021-v-dqw4w9wgxcq/pull/34). 
+**Static analysis:** Sonarqube has been set up based on issue [#29](https://github.com/BME-MIT-IET/iet-hf2021-v-dqw4w9wgxcq/issues/29). The pull request for the set up can be seen [here](https://github.com/BME-MIT-IET/iet-hf2021-v-dqw4w9wgxcq/pull/34). 
 
 The problems mentioned in [#39](https://github.com/BME-MIT-IET/iet-hf2021-v-dqw4w9wgxcq/issues/39) have been fixed. The solutions can be seen in [#40](https://github.com/BME-MIT-IET/iet-hf2021-v-dqw4w9wgxcq/pull/40).
 
@@ -48,4 +48,4 @@ The workflow and the solutions can be seen in the issues and pull requests above
 
 In total the code quality has become better based on clean-code standards.
 ## Lessons learned
-The takeaway is that static analysis tools are very helpful, but personal reviews are also important, because at the end of the day developers need to read and understand easily.
+The takeaway is that static analysis tools are very helpful, but personal reviews are also important, because at the end of the day developers need to read and understand the code easily.
