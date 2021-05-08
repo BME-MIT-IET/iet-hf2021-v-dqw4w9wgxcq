@@ -1,10 +1,5 @@
-.project
-.settings/
-.classpath
-bin/
-*.class
-target/
-build/
-*.log
-*~
-src/test/resources/output/
+.gradle/
+gradle/
+
+lib/build/
+lib/test/resources/output/
