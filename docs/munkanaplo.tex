@@ -40,6 +40,14 @@ ellenőrzése%
 {SonarQube workflow}{34}{#1}}
 \def\issuepdfb#1{\issuetask
 {Munkanapló első részének}{42}{#1}}
+\def\issuedocker#1{\issuetask
+{Docker deployment}{43}{#1}}
+\def\issueperfanal#1{\issuetask
+{Teljesítmény elemzés}{45}{#1}}
+\def\issueexptest#1{\issuetask
+{Exploratory testing}{10}{#1}}
+\def\issuefixsonarq#1{\issuetask
+{SonarQube által talált hibák javításának}{40}{#1}}
 
 \def\membera{
 \def\mname{Robotka István Adrián}
@@ -52,6 +60,12 @@ ellenőrzése%
 \ttask{Build rendszer + CI (\issue{16})}{4}{
 \item \issuebuildsystem{m}
 \item \issuebuildsystemci{m}
+}
+
+\ttask{\issuedocker{m}}{8}{
+\item Dockerfile elkészítése
+\item Docker workflow elkészítése
+\item Dokumentáció elkészítése
 }
 
 }
@@ -71,10 +85,16 @@ ellenőrzése%
 \item Build rendszer bug-ok jelzése (\issue{28})
 }
 
-\ttask{Dokumentáció készítése}{3}{
+\ttask{Dokumentáció készítése}{4}{
 \item \iethfmdframe{m}
 \item \LaTeX\ template elkészítése (\issue{35})
 \item \issuepdfb{m}
+}
+
+\ttask{\issueperfanal{m}}{3}{
+\item Teljesítmény elemző eszköz futtatása
+\item Elemzés elkészítése
+\item Dokumentáció írása
 }
 
 \ttask{\boilerplatecodereview}{3}{
@@ -101,11 +121,18 @@ ellenőrzése%
 \item \issuedocmdskeleton{m}
 }
 
-\ttask{\boilerplatecodereview}{3}{
+\ttask{\issueexptest{m}}{3}{
+\item Exploratory testing módszerének utánajárás
+\item Teszt folyamat megtervezése
+\item Tesztek elvégzése
+}
+
+\ttask{\boilerplatecodereview}{4}{
 \item \issuebuildsystemci{r}
 \item \iethfmdframe{r}
 \item \issuesonarqube{r}
 \item \issuepdfb{r}
+\item \issuedocker{r}
 }
 
 }
@@ -125,16 +152,25 @@ ellenőrzése%
 \item Issue-k létrehozása: \issue{13}, \issue{15}, \issue{18}, \issue{19}
 }
 
-\ttask{\issuefixproblems{m}}{3}{
+\ttask{\issuefixproblems{m}}{4}{
 \item Nem optimális string ellenőrzésej javítása (\issue{13})
 \item If-es szerkezetek refaktorálása switch-case-be (\issue{15})
 \item Kommentezett kódsorok eltávolítása (\issue{18})
 \item Random szám generálás szélsőérték kijavítása (\issue{19})
 }
 
+\ttask{\issuefixsonarq{m}}{3}{
+\item Felesleges cast-ok eltávolítása
+\item Kommentezett kódsorok eltávolítása
+\item If-es szerkezetek összevonása
+\item Duplikált log üzenetek refaktorálása változóba
+\item \texttt{Random} kiszervezése külső változóba
+}
+
 \ttask{\boilerplatecodereview}{3}{
 \item \issuedocmdskeleton{r}
 \item \issuefixproblems{r}
+\item \issueperfanal{r}
 }
 
 }
