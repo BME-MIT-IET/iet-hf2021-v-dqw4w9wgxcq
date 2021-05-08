@@ -1,7 +1,45 @@
 \documentclass{article}
 \usepackage[a4paper]{geometry}
-
 \usepackage[magyar]{babel}
+\usepackage{hyperref}
+
+\def\mteamname{v=dQw4w9WgXcQ}
+\def\githubproject{https://github.com/BME-MIT-IET/iet-hf2021-v-dqw4w9wgxcq}
+
+\def\boilerplatearch{%
+\ttask{Ismerkedés a projekt architektúrával}{3}{
+\item Build rendszer architektúra megértése (Gradle)
+\item Kód szervezés megértése
+}
+}
+\def\boilerplatecodereview{Pull request-ek ellenőrzése}
+
+\def\issuetask#1#2#3{
+#1
+\if #3m%
+elkészítése%
+\else%
+ellenőrzése%
+\fi%
+\ (\issue{#2})
+}
+
+\def\issuebuildsystem#1{\issuetask
+{Gradle build rendszer}{16}{#1}}
+\def\issuebuildsystemci#1{\issuetask
+{CI}{16}{#1}}
+\def\iethfmdframe#1{\issuetask
+{\texttt{IET-HF.md} keret}{17}{#1}}
+\def\iethfmdaddrefs#1{\issuetask
+{\texttt{IET-HF.md}-ba issue-k linkelésének}{30}{#1}}
+\def\issuedocmdskeleton#1{\issuetask
+{Dokumentációs \texttt{.md} file-ok keretének}{32}{#1}}
+\def\issuefixproblems#1{\issuetask
+{Talált hibák javításának}{33}{#1}}
+\def\issuesonarqube#1{\issuetask
+{SonarQube workflow}{34}{#1}}
+\def\issuepdfb#1{\issuetask
+{Munkanapló első részének}{42}{#1}}
 
 \def\membera{
 \def\mname{Robotka István Adrián}
@@ -9,8 +47,11 @@
 \def\mgithub{adrianrobotka}
 \def\mlog{
 
-\ttask{Részfeladat 1}{1}{
-\item ...
+\boilerplatearch
+
+\ttask{Build rendszer + CI (\issue{16})}{4}{
+\item \issuebuildsystem{m}
+\item \issuebuildsystemci{m}
 }
 
 }
@@ -23,13 +64,22 @@
 \def\mgithub{kurucz-gyuri}
 \def\mlog{
 
+\boilerplatearch
+
 \ttask{Futtatható CLI eszköz elkészítése}{2}{
-\item CLI tool elkészítése
-\item Build rendszer bug-ok jelzése
+\item CLI tool elkészítése (\issue{37})
+\item Build rendszer bug-ok jelzése (\issue{28})
 }
 
-\ttask{Dokumentáció készítése}{2}{
-\item \LaTeX\ template elkészítése
+\ttask{Dokumentáció készítése}{3}{
+\item \iethfmdframe{m}
+\item \LaTeX\ template elkészítése (\issue{35})
+\item \issuepdfb{m}
+}
+
+\ttask{\boilerplatecodereview}{3}{
+\item \issuebuildsystem{r}
+\item \iethfmdaddrefs{r}
 }
 
 }
@@ -43,8 +93,19 @@
 \def\mgithub{bobarna}
 \def\mlog{
 
-\ttask{Részfeladat 1}{123}{
-\item ...
+\boilerplatearch
+
+\ttask{Projekt menedzsment}{5}{
+\item Elvégzendő feladatok definiálása (\issue{3})
+\item \iethfmdaddrefs{m}
+\item \issuedocmdskeleton{m}
+}
+
+\ttask{\boilerplatecodereview}{3}{
+\item \issuebuildsystemci{r}
+\item \iethfmdframe{r}
+\item \issuesonarqube{r}
+\item \issuepdfb{r}
 }
 
 }
@@ -57,8 +118,23 @@
 \def\mgithub{NoszDom}
 \def\mlog{
 
-\ttask{Részfeladat 1}{123}{
-\item ...
+\boilerplatearch
+
+\ttask{Manuális hibakeresés}{3}{
+\item Kód egy részének átnézése
+\item Issue-k létrehozása: \issue{13}, \issue{15}, \issue{18}, \issue{19}
+}
+
+\ttask{\issuefixproblems{m}}{3}{
+\item Nem optimális string ellenőrzésej javítása (\issue{13})
+\item If-es szerkezetek refaktorálása switch-case-be (\issue{15})
+\item Kommentezett kódsorok eltávolítása (\issue{18})
+\item Random szám generálás szélsőérték kijavítása (\issue{19})
+}
+
+\ttask{\boilerplatecodereview}{3}{
+\item \issuedocmdskeleton{r}
+\item \issuefixproblems{r}
 }
 
 }
@@ -71,8 +147,16 @@
 \def\mgithub{rlacko58}
 \def\mlog{
 
-\ttask{Részfeladat 1}{123}{
-\item ...
+\boilerplatearch
+
+\ttask{Statikus analízis elkészítése}{8}{
+\item Issue létrehozása (\issue{29})
+\item Saját SonarQube instance beüzemelése
+\item \issuesonarqube{m}
+}
+
+\ttask{\boilerplatecodereview}{3}{
+\item \iethfmdframe{r}
 }
 
 }
@@ -87,7 +171,7 @@
 	\membere
 }
 
-\def\mteamname{v=dQw4w9WgXcQ}
+\def\issue#1{\href{\githubproject/issues/#1}{\##1}}
 
 \newcounter{membernum}
 \newcounter{timecounter}
