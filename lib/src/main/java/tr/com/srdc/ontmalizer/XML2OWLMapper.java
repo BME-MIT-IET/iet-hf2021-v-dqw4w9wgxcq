@@ -82,6 +82,9 @@ public class XML2OWLMapper {
     private String NS = null;
     private String nsPrefix = null;
 
+    private Random random = new Random();
+
+
     /**
      * Creates a new XML2OWLMapper instance.
      *
@@ -161,7 +164,6 @@ public class XML2OWLMapper {
 
         model = ModelFactory.createDefaultModel();
 
-        Random random = new Random();
         no = random.nextInt(9999999+1);
 
         // Get all the named resources the count map
