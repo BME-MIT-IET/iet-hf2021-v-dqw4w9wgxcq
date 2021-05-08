@@ -21,4 +21,4 @@ jobs:
         run: ./gradlew libsonarqube \
             -Dsonar.projectKey=lib-v-dqw4w9wgxcq \
             -Dsonar.host.url=https://sonarqube.maze.sch.bme.hu \
-            -Dsonar.login=${{ secrets.SONAR_LOGIN }}
+            -Dsonar.login=e9b53371023fbe4193c5c0df5346d47d52db320d
