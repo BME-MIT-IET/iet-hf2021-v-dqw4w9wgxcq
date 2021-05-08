@@ -1,0 +1,121 @@
+\documentclass{article}
+\usepackage[a4paper]{geometry}
+
+\usepackage[magyar]{babel}
+
+\def\membera{
+\def\mname{Robotka István Adrián}
+\def\mneptun{I9RV7W}
+\def\mgithub{adrianrobotka}
+\def\mlog{
+
+\ttask{Részfeladat 1}{1}{
+\item ...
+}
+
+}
+\tmember
+}
+
+\def\memberb{
+\def\mname{Kurucz György}
+\def\mneptun{HQMBE2}
+\def\mgithub{kurucz-gyuri}
+\def\mlog{
+
+\ttask{Futtatható CLI eszköz elkészítése}{2}{
+\item CLI tool elkészítése
+\item Build rendszer bug-ok jelzése
+}
+
+\ttask{Dokumentáció készítése}{2}{
+\item \LaTeX\ template elkészítése
+}
+
+}
+\tmember
+}
+
+
+\def\memberc{
+\def\mname{Börcsök Barnabás}
+\def\mneptun{WC624D}
+\def\mgithub{bobarna}
+\def\mlog{
+
+\ttask{Részfeladat 1}{123}{
+\item ...
+}
+
+}
+\tmember
+}
+
+\def\memberd{
+\def\mname{Noszlopi Dominik Márk}
+\def\mneptun{I2STLW}
+\def\mgithub{NoszDom}
+\def\mlog{
+
+\ttask{Részfeladat 1}{123}{
+\item ...
+}
+
+}
+\tmember
+}
+
+\def\membere{
+\def\mname{Rafael László}
+\def\mneptun{N3PTUN}
+\def\mgithub{rlacko58}
+\def\mlog{
+
+\ttask{Részfeladat 1}{123}{
+\item ...
+}
+
+}
+\tmember
+}
+
+\def\members{
+	\membera
+	\memberb
+	\memberc
+	\memberd
+	\membere
+}
+
+\def\mteamname{v=dQw4w9WgXcQ}
+
+\newcounter{membernum}
+\newcounter{timecounter}
+\def\tmember{
+	\stepcounter{membernum}%
+	\noindent {\large Csapattag \themembernum}
+	\ (\mname, \mneptun, \texttt{\mgithub}) \\
+	\setcounter{timecounter}{0}
+	\mlog
+	\noindent {\tiny (összesen kb. \thetimecounter\ óra)}
+
+	\noindent\rule{\textwidth}{1pt}
+	\vspace{1mm}
+
+}
+\def\ttask#1#2#3{
+	\addtocounter{timecounter}{#2}%
+	\noindent #1 (összesen kb. #2 óra):
+	\begin{itemize}
+		#3
+	\end{itemize}
+}
+
+\begin{document}
+\noindent {\bf\Large Házi feladat munkanapló: \texttt{\mteamname}} \\
+Integrációs és ellenőrzési technikák (VIMIAC04)
+\vspace{1cm}
+
+\members
+\noindent \today
+\end{document}
