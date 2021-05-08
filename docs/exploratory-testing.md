@@ -41,20 +41,24 @@ java -jar cli/build/libs/cli-1.0-SNAPSHOT-all.jar lib/src/test/resources/CDA/CDA
 
 ## Printscreen (optional, if relevant)
 When had no access to the output file, the program ran, and displayed an error only at the end.
-![./imgs/exploratory-permission-denied.png]
+
+![](./imgs/exploratory-permission-denied.png)
 
 Displayed no error message when the XML file had no <xml...> header.
 When the XML file was corrupted (missing a tag), the program ran into a nullpointer exception error after running for quite a long time.
-![./imgs/exploratory-missing-tag.png]
+
+![](./imgs/exploratory-missing-tag.png)
 
 The program ran successfully with higher java version.
-![./imgs/exploratory-missing-tag.png]
+
+![](./imgs/exploratory-missing-tag.png)
 
 When the input "file" was /dev/null (a.k.a an empty file), the application ran into an nullpointer exception error.
-![./imgs/exploratory-dev-null.png]
+
+![](./imgs/exploratory-dev-null.png)
 
 The LANG environment variable sadly had no effect on the program's output.
-![./imgs/exploratory-LANG.png]
+![](./imgs/exploratory-LANG.png)
 
 ## Results
 The CLI tool has its limitations, especially in terms of user experience. The interface lacks a lot in usability.
