@@ -1,5 +1,4 @@
 .gradle/
-gradle/
 
 lib/build/
 lib/src/test/resources/output/
