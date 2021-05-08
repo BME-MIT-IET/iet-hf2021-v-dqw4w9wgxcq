@@ -3,6 +3,5 @@
 .settings/
 build
 
-build
 lib/src/test/resources/output/
 lib/bin
