@@ -11,7 +11,7 @@ public class NamingUtil {
 
 	public static String createPropertyName(String prefix, String propName) {
 		
-		if(prefix == null || prefix.equals(""))
+		if(prefix == null || prefix.isEmpty())
 			return propName;
 		else {
 			StringBuilder sb = new StringBuilder();

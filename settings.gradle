@@ -1,2 +1,3 @@
 rootProject.name = 'ontomalizer'
 include('lib')
+include('cli')
