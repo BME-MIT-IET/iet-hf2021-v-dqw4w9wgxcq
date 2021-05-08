@@ -1,7 +1,7 @@
 plugins {
     id 'java'
-    id 'maven-publish'
     id "org.sonarqube" version "3.2.0"
+    id 'java-library'
 }
 
 group = "hu.bme.vdqw4w9wgxcq"
@@ -16,7 +16,7 @@ repositories {
 dependencies {
     implementation 'com.sun.xsom:xsom:20140925'
     implementation 'org.apache.jena:jena-core:3.7.0'
-    implementation 'ch.qos.logback:logback-classic:1.1.7'
+    api 'ch.qos.logback:logback-classic:1.1.7'
     testImplementation 'junit:junit:4.11'
 }
 
