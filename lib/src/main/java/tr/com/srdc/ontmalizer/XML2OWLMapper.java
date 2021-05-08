@@ -384,36 +384,32 @@ public class XML2OWLMapper {
             ExtendedIterator<OntClass> itres = temp.listSuperClasses();
             while (itres.hasNext()) {
                 OntClass rescl = (OntClass) itres.next();
-                if (rescl.isRestriction()) {
-                    if (rescl.asRestriction().isAllValuesFromRestriction()) {
-                        AllValuesFromRestriction avfres = rescl.asRestriction().asAllValuesFromRestriction();
-                        /**
-                         * In some cases, a resource can be both an object and
-                         * datatype property. If, at the same time the prefixes
-                         * opprefix and dtpprefix are identical, then we have to
-                         * be careful. We check directly the RDF type of the
-                         * AllValuesFrom restriction in this case.
-                         */
-                        if (avfres.getOnProperty().getLocalName().equals(NamingUtil.createPropertyName(opprefix, prop))
-                                && opprefix.equals(dtpprefix)
-                                && avfres.getOnProperty().isObjectProperty()
-                                && avfres.getOnProperty().isDatatypeProperty()) {
-                            result.setDatatype(findResourceType(avfres.getAllValuesFrom().getURI()).isDatatype());
-                            result.setResource(avfres.getAllValuesFrom());
-                            return result;
-                        } else if (avfres.getOnProperty().getLocalName()
-                                .equals(NamingUtil.createPropertyName(opprefix, prop))
-                                && avfres.getOnProperty().isObjectProperty()) {
-                            result.setDatatype(false);
-                            result.setResource(avfres.getAllValuesFrom());
-                            return result;
-                        } else if (avfres.getOnProperty().getLocalName()
-                                .equals(NamingUtil.createPropertyName(dtpprefix, prop))
-                                && avfres.getOnProperty().isDatatypeProperty()) {
-                            result.setDatatype(true);
-                            result.setResource(avfres.getAllValuesFrom());
-                            return result;
-                        }
+                if (rescl.isRestriction() && rescl.asRestriction().isAllValuesFromRestriction()) {
+                    AllValuesFromRestriction avfres = rescl.asRestriction().asAllValuesFromRestriction();
+                    /**
+                     * In some cases, a resource can be both an object and datatype property. If, at
+                     * the same time the prefixes opprefix and dtpprefix are identical, then we have
+                     * to be careful. We check directly the RDF type of the AllValuesFrom
+                     * restriction in this case.
+                     */
+                    if (avfres.getOnProperty().getLocalName().equals(NamingUtil.createPropertyName(opprefix, prop))
+                            && opprefix.equals(dtpprefix) && avfres.getOnProperty().isObjectProperty()
+                            && avfres.getOnProperty().isDatatypeProperty()) {
+                        result.setDatatype(findResourceType(avfres.getAllValuesFrom().getURI()).isDatatype());
+                        result.setResource(avfres.getAllValuesFrom());
+                        return result;
+                    } else if (avfres.getOnProperty().getLocalName()
+                            .equals(NamingUtil.createPropertyName(opprefix, prop))
+                            && avfres.getOnProperty().isObjectProperty()) {
+                        result.setDatatype(false);
+                        result.setResource(avfres.getAllValuesFrom());
+                        return result;
+                    } else if (avfres.getOnProperty().getLocalName()
+                            .equals(NamingUtil.createPropertyName(dtpprefix, prop))
+                            && avfres.getOnProperty().isDatatypeProperty()) {
+                        result.setDatatype(true);
+                        result.setResource(avfres.getAllValuesFrom());
+                        return result;
                     }
                 }
             }
